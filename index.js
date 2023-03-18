@@ -2,7 +2,7 @@
 const express = require("express");
 
 // PORT - the port at which the application will listen and serve
-const PORT = 4000;
+const PORT = 8080;
 
 // initializing express app
 const app = express();

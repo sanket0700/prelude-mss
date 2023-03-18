@@ -1,0 +1,24 @@
+{
+  "name": "prelude-mss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "develop": "npx nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanket0700/prelude-mss.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanket0700/prelude-mss/issues"
+  },
+  "homepage": "https://github.com/sanket0700/prelude-mss#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

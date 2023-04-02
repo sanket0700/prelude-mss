@@ -1,6 +1,9 @@
 // module imports
 import * as dotenv from "dotenv";
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
+
+// internal imports
+import { Server } from "./server";
 
 // configuring dotenv
 dotenv.config();
@@ -8,15 +11,8 @@ dotenv.config();
 // initializing express app
 const app: Application = express();
 
-// entry point to all requests
-app.get("*", (req: Request, res: Response) => {
-  return res.status(200).json({ message: "Ok" });
-});
+// initalizing a server instance
+const server = new Server(app);
 
-// PORT - the port at which the application will listen and serve
-const PORT: string = process.env.PORT || "4000";
-
-// application listening
-app.listen(PORT, () => {
-  console.log(`App is now serving at PORT : ${PORT}`);
-});
+// starting server at PORT
+server.start(process.env.PORT);

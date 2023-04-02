@@ -4,17 +4,25 @@ import { Application, Router } from "express";
 
 // internal imports
 import { Logger } from "./services";
+import { UserRouter } from "./routes";
 
 // Server - A class abstracting the process of setting up an express app
 export class Server {
 
-  private router: Router;
+  // router - A private express router, upon which the paths will be added or other routes will be mounted
+  private apiRouter: Router;
+
+  private userRouter: Router = new UserRouter().router;
+
+  // logger - A local Logger instance for the class
   private logger: Logger;
+
+  // 
   public server: HttpServer | undefined;
 
   constructor(private readonly app: Application) {
     this.logger = new Logger();
-    this.router = Router();
+    this.apiRouter = Router();
     this.init();
   }
 
@@ -39,6 +47,7 @@ export class Server {
   }
 
   private init() {
-
+    this.app.use("/api", this.apiRouter);
+    this.apiRouter.use("/user", this.userRouter);
   }
 }
